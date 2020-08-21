@@ -1,0 +1,12 @@
+{
+  "name": "work-shop",
+  "main": "index.html",
+  "dependencies": {
+    "polymer": "Polymer/polymer#^2.0.0",
+    "ivan-munoz": "https://github.com/Iivanmunoz/componente-polymer.git"
+  },
+  "devDependencies": {
+    "web-component-tester": "Polymer/web-component-tester#^6.0.0",
+    "webcomponentsjs": "webcomponents/webcomponentsjs#^1.0.0"
+  }
+}
