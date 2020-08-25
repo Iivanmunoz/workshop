@@ -1,8 +1,6 @@
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
-<link rel="import" href="../..//bower_components/ivan-munoz/ivan-munoz.html">
-<link rel="import" href="../../bower_components/paper-card/paper-card.html">
-<link rel="import" href="../../bower_components/paper-input/index.html">
-<link rel="import" href="../../bower_components/paper-card/index.html">
+<link rel="import" href="../../bower_components/ivan-munoz/ivan-munoz.html">
+
 
 
 
@@ -12,15 +10,24 @@
     <style>
       :host {
         display: block;
+        font-family: Roboto;
+        padding: 1rem;
+
       }
+      
       .container{
         display: flex;;
         justify-content: center;
       }
       ivan-munoz{
-        --ivan-munoz:{
-          margin: 1rem;
+        --ivan-munoz: {
+          margin: 4rem;
           border-radius:10px;
+        },
+        ivan-munoz:nth-child(2) {
+          --ivan-munoz-paper-card: {
+            background:lightyellow;
+          }
         },
         paper-button{
           --paper-button:{
@@ -30,14 +37,13 @@
 
         }
       }
-      .primerCard{
-        background:violet;
-      }
+      
     </style>
-    <h2>Hello [[prop1]]!</h2>
+  <div class="container">
     <ivan-munoz title="titulo fijo" input-value="hola fijo"></ivan-munoz>
-    <ivan-munioz title="{{input-value}}" input-value="input atravez de propiedad"></ivan-munioz>
-    <ivan-munioz title="{{input-value}}" input-value="{{input-value}}"></ivan-munioz>
+    <ivan-munoz title="{{input-value}}" input-value="input atravez de propiedad"></ivan-munoz>
+    <ivan-munoz title="{{input-value}}" input-value="{{input-value}}"></ivan-munoz>
+  </div>
   </template>
 
 
