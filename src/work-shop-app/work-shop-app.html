@@ -1,5 +1,11 @@
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
-<link rel="import" href="/bower_components/ivan-munoz/ivan-munoz.html">
+<link rel="import" href="../..//bower_components/ivan-munoz/ivan-munoz.html">
+<link rel="import" href="../../bower_components/paper-card/paper-card.html">
+<link rel="import" href="../../bower_components/paper-input/index.html">
+<link rel="import" href="../../bower_components/paper-card/index.html">
+
+
+
 
 <dom-module id="work-shop-app">
   <template>
@@ -7,11 +13,33 @@
       :host {
         display: block;
       }
+      .container{
+        display: flex;;
+        justify-content: center;
+      }
+      ivan-munoz{
+        --ivan-munoz:{
+          margin: 1rem;
+          border-radius:10px;
+        },
+        paper-button{
+          --paper-button:{
+            font-size: 30px;
+            background:violet;
+          }
+
+        }
+      }
+      .primerCard{
+        background:violet;
+      }
     </style>
     <h2>Hello [[prop1]]!</h2>
-    <ivan-munoz></ivan-munoz>
+    <ivan-munoz title="titulo fijo" input-value="hola fijo"></ivan-munoz>
+    <ivan-munioz title="{{input-value}}" input-value="input atravez de propiedad"></ivan-munioz>
+    <ivan-munioz title="{{input-value}}" input-value="{{input-value}}"></ivan-munioz>
   </template>
-  
+
 
   <script>
     /**
@@ -25,6 +53,21 @@
           prop1: {
             type: String,
             value: 'work-shop-app'
+          },
+          inputvalue:{
+            type: String,
+            value:'titulo con una propiedad',
+            notify: true
+          },
+          inputlabel:{
+            type: String,
+            value: 'inpuntlabel',
+            notify: true
+          },
+          valuebutton:{
+            type: String,
+            value: '',
+            notify: true
           }
         };
       }
