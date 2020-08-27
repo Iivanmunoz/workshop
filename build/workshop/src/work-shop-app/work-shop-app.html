@@ -1,0 +1,86 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../bower_components/ivan-munoz/ivan-munoz.html">
+
+
+
+
+
+<dom-module id="work-shop-app">
+  <template>
+    <style>
+      :host {
+        display: block;
+        font-family: Roboto;
+        padding: 1rem;
+
+      }
+      
+      .container{
+        display: flex;;
+        justify-content: center;
+      }
+      ivan-munoz{
+        --ivan-munoz: {
+          margin: 4rem;
+          border-radius:10px;
+        },
+        ivan-munoz:nth-child(2) {
+          --ivan-munoz-paper-card: {
+            background:lightyellow;
+          } 
+        },
+        paper-button{
+          --paper-button:{
+            font-size: 30px;
+            background:violet;
+          }
+
+        }
+      }
+      
+    </style>
+  <div class="container">
+    <ivan-munoz title="titulo fijo" input-value="hola fijo"></ivan-munoz>
+    <ivan-munoz title="{{inputvalue}}" input-value="input atravez de propiedad"></ivan-munoz>
+    <ivan-munoz title="{{inputvalue}}" input-value="{{inputvalue}}"></ivan-munoz>
+  </div>
+  </template>
+
+
+  <script>/**
+ * @customElement
+ * @polymer
+ */
+class WorkShopApp extends Polymer.Element {
+  static get is() {
+    return 'work-shop-app';
+  }
+
+  static get properties() {
+    return {
+      prop1: {
+        type: String,
+        value: 'work-shop-app'
+      },
+      inputvalue: {
+        type: String,
+        value: 'titulo con una propiedad',
+        notify: true
+      },
+      inputlabel: {
+        type: String,
+        value: 'inpuntlabel',
+        notify: true
+      },
+      valuebutton: {
+        type: String,
+        value: '',
+        notify: true
+      }
+    };
+  }
+
+}
+
+window.customElements.define(WorkShopApp.is, WorkShopApp);</script>
+</dom-module>
