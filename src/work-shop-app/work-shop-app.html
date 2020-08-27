@@ -1,5 +1,6 @@
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../../bower_components/ivan-munoz/ivan-munoz.html">
+<link rel="import" href="../../bower_components/componente-login/componente-login.html">
 
 
 
@@ -27,7 +28,7 @@
         ivan-munoz:nth-child(2) {
           --ivan-munoz-paper-card: {
             background:lightyellow;
-          }
+          } 
         },
         paper-button{
           --paper-button:{
@@ -39,10 +40,15 @@
       }
       
     </style>
-  <div class="container">
+    <div hidden="{{!paramostrar}}">
+      <!-- usuario dentro viene del componente #83  -->
+      <componente-login on-usuariodentro-changed="prueba"></componente-login>
+    </div>
+
+  <div hidden="{{paramostrar}}">
     <ivan-munoz title="titulo fijo" input-value="hola fijo"></ivan-munoz>
-    <ivan-munoz title="{{input-value}}" input-value="input atravez de propiedad"></ivan-munoz>
-    <ivan-munoz title="{{input-value}}" input-value="{{input-value}}"></ivan-munoz>
+    <ivan-munoz title="{{inputvalue}}" input-value="input atravez de propiedad"></ivan-munoz>
+    <ivan-munoz title="{{inputvalue}}" input-value="{{inputvalue}}"></ivan-munoz>
   </div>
   </template>
 
@@ -56,10 +62,7 @@
       static get is() { return 'work-shop-app'; }
       static get properties() {
         return {
-          prop1: {
-            type: String,
-            value: 'work-shop-app'
-          },
+          
           inputvalue:{
             type: String,
             value:'titulo con una propiedad',
@@ -74,8 +77,20 @@
             type: String,
             value: '',
             notify: true
+          },
+          paramostrar:{
+            type:Boolean,
+            value:true,
+            notify:true
           }
         };
+      }
+      prueba(e){
+        console.log(e.detail.value);
+        if(e.detail.value){
+          alert("ya estas dentro");
+          this.paramostrar = false;
+        }
       }
     }
 
