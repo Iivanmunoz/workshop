@@ -1,9 +1,8 @@
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../../bower_components/ivan-munoz/ivan-munoz.html">
 <link rel="import" href="../../bower_components/componente-login/componente-login.html">
-
-
-
+<link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="../../bower_components/paper-card/paper-card.html">
 
 
 <dom-module id="work-shop-app">
@@ -50,7 +49,35 @@
     <ivan-munoz title="{{inputvalue}}" input-value="input atravez de propiedad"></ivan-munoz>
     <ivan-munoz title="{{inputvalue}}" input-value="{{inputvalue}}"></ivan-munoz>
   </div>
+
+  <iron-ajax auto
+    url="https://pokeapi.co/api/v2/pokemon"
+    handle-as="json"
+    on-response="handleResponse">
+  </iron-ajax>
+
+  <iron-ajax auto
+  url="https://pokeres.bastionbot.org/images/pokemon/2.png"
+  handle-as="json"
+  on-response="handleResponse">
+</iron-ajax>
+
+    <template is="dom-repeat" items="{{traetodo}}">
+      <paper-card heading="{{item.name}}"></paper-card>
+      <div class="card-content">
+        <p>{{item.url}}</p>
+      </div>
+      
+    </template>
+  <template is="dom-repeat" items="{{traeimagen}}">
+    <paper-card heading="{{item.name}}" image="{{item.image}}"></paper-card>
   </template>
+
+  </template>
+
+  
+  
+  
 
 
   <script>
@@ -82,15 +109,28 @@
             type:Boolean,
             value:true,
             notify:true
+          },
+          traetodo:{
+            type:Array,
+            value:[]
+          },
+          traeimagen:{
+            type:Array,
+            value:[]
           }
         };
       }
       prueba(e){
-        console.log(e.detail.value);
+        // console.log(e.detail.value);
         if(e.detail.value){
           alert("ya estas dentro");
           this.paramostrar = false;
         }
+      }
+      handleResponse(e){
+      console.log(e.detail.response);
+        this.traetodo = e.detail.response.results;
+        
       }
     }
 
